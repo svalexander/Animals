@@ -15,7 +15,7 @@ import nyc.c4q.shannonalexander_navarro.animals.models.Animal;
  */
 
 public class AnimalAdapter extends RecyclerView.Adapter {
-    
+
     List<Animal> animals = new ArrayList<>();
 
     public AnimalAdapter(List<Animal> animals) {
@@ -25,7 +25,8 @@ public class AnimalAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.animal_item, parent, false);
-        return new AnimalViewHolder(itemView);    }
+        return new AnimalViewHolder(itemView);
+    }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {

@@ -29,31 +29,30 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AnimalFragment extends Fragment {
 
- //   AnimalApiCall animalApiCall;
     AnimalAdapter animalAdapter;
     RecyclerView rv;
-    List<Animal> animals = new ArrayList<>();
     private static final String HOUSE_URL = "http://jsjrobotics.nyc/";
     private static final String TAG = "success";
     static List<Animal> animalList = new ArrayList<>();
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.animal_fragment, container, false);
 
+
         rv = (RecyclerView) root.findViewById(R.id.rv);
         rv.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-//        animalAdapter = new AnimalAdapter(animals);
-//        rv.setAdapter(animalAdapter);
+
+
         return root;
     }
 
     @Override
     public void onStart() {
         super.onStart();
-      //  animalApiCall.getAnimalJson();
-       getAnimalJson();
+        getAnimalJson();
     }
 
     private void getAnimalJson() {
@@ -81,7 +80,7 @@ public class AnimalFragment extends Fragment {
 
                 if (response.isSuccessful()) {
 
-                    Log.d(TAG, "Success: " + animalResponse.getAnimals().get(0).getName());
+                    Log.d(TAG, "Success: " + animalResponse.getAnimals().get(0).getBackground());
                 } else {
                     try {
                         Log.d(TAG, "Error" + response.errorBody().string());

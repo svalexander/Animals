@@ -15,17 +15,29 @@ import nyc.c4q.shannonalexander_navarro.animals.models.Animal;
 public class AnimalViewHolder extends RecyclerView.ViewHolder {
 
     TextView animalName;
-    LinearLayout layout;
+    LinearLayout animalLayout;
+    LinearLayout fragLayout;
+
 
     public AnimalViewHolder(View itemView) {
         super(itemView);
 
         animalName = (TextView) itemView.findViewById(R.id.name);
-        layout = (LinearLayout) itemView.findViewById(R.id.animal_layout);
+        animalLayout = (LinearLayout) itemView.findViewById(R.id.animal_layout);
+        fragLayout = (LinearLayout) itemView.findViewById(R.id.frag);
     }
 
-    public void bind(Animal anAnimal) {
+    public void bind(final Animal anAnimal) {
         animalName.setText(anAnimal.getName());
         animalName.setTextColor(Color.parseColor(anAnimal.getTextColor()));
+
+        animalName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int color = Color.parseColor(anAnimal.getBackground());
+                animalLayout.setBackgroundColor(color);
+
+            }
+        });
     }
 }
