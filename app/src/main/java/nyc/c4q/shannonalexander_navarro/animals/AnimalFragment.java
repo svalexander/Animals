@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nyc.c4q.shannonalexander_navarro.animals.models.Animal;
+import nyc.c4q.shannonalexander_navarro.animals.network.AnimalApiCall;
 
 /**
  * Created by shannonalexander-navarro on 12/21/16.
@@ -31,9 +32,14 @@ public class AnimalFragment extends Fragment {
 
         rv = (RecyclerView) root.findViewById(R.id.rv);
         rv.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        //   getTheRecords();
         animalAdapter = new AnimalAdapter(animals);
         rv.setAdapter(animalAdapter);
         return root;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        AnimalApiCall.getAnimalJson();
     }
 }
