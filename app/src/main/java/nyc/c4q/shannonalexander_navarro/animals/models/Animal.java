@@ -6,9 +6,9 @@ package nyc.c4q.shannonalexander_navarro.animals.models;
 
 public class Animal {
 
-    private String name;
-    private String textColor;
-    private String background;
+    public String name;
+    public String textColor;
+    public String background;
 
     public String getName() {
         return name;
