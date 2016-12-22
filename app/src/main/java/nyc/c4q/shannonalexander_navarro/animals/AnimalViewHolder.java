@@ -1,5 +1,6 @@
 package nyc.c4q.shannonalexander_navarro.animals;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -25,5 +26,6 @@ public class AnimalViewHolder extends RecyclerView.ViewHolder {
 
     public void bind(Animal anAnimal) {
         animalName.setText(anAnimal.getName());
+        animalName.setTextColor(Color.parseColor(anAnimal.getTextColor()));
     }
 }
