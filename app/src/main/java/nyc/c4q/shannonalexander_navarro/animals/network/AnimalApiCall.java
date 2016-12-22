@@ -1,11 +1,13 @@
 package nyc.c4q.shannonalexander_navarro.animals.network;
 
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import nyc.c4q.shannonalexander_navarro.animals.AnimalAdapter;
 import nyc.c4q.shannonalexander_navarro.animals.models.Animal;
 import nyc.c4q.shannonalexander_navarro.animals.models.AnimalResponse;
 import retrofit2.Call;
@@ -20,12 +22,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AnimalApiCall {
 
+     AnimalAdapter animalAdapter;
+     RecyclerView rv;
+
     private static final String HOUSE_URL = "http://jsjrobotics.nyc/";
     private static final String TAG = "success";
-    List<Animal> animalList = new ArrayList<>();
+    static List<Animal> animalList = new ArrayList<>();
 
 
-    public static void getAnimalJson() {
+    public void  getAnimalJson() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(HOUSE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -42,8 +47,14 @@ public class AnimalApiCall {
 
                 AnimalResponse animalResponse = response.body();
 
+                List<Animal> ourAnimals = response.body().getAnimals();
+                animalList = ourAnimals;
+
+                animalAdapter = new AnimalAdapter(animalList);
+                rv.setAdapter(animalAdapter);
 
                 if (response.isSuccessful()) {
+
                     Log.d(TAG, "Success: " + animalResponse.getAnimals().get(0).getName());
                 } else {
                     try {
