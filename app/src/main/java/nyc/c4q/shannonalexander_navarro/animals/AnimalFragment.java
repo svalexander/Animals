@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -34,6 +35,7 @@ public class AnimalFragment extends Fragment {
     private static final String HOUSE_URL = "http://jsjrobotics.nyc/";
     private static final String TAG = "success";
     static List<Animal> animalList = new ArrayList<>();
+    static LinearLayout fragLayout;
 
 
     @Nullable
@@ -41,6 +43,7 @@ public class AnimalFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.animal_fragment, container, false);
 
+        fragLayout = (LinearLayout) root.findViewById(R.id.frag);
 
         rv = (RecyclerView) root.findViewById(R.id.rv);
         rv.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));

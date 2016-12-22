@@ -35,7 +35,8 @@ public class AnimalViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View view) {
                 int color = Color.parseColor(anAnimal.getBackground());
-                animalLayout.setBackgroundColor(color);
+                AnimalFragment.fragLayout
+                        .setBackgroundColor(color);
 
             }
         });
